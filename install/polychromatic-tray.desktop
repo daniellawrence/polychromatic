@@ -2,8 +2,8 @@
 Categories=Utility;
 Comment=A tool to quickly access the features of the Polychromatic Controller.
 Encoding=UTF-8
-Exec=/usr/share/polychromatic/tray_applet.py
-Icon=/usr/share/polychromatic/data/img/app-icon.svg
+Exec=/usr/bin/polychromatic-tray-applet
+Icon=/usr/share/polychromatic/img/app-icon.svg
 Name=Polychromatic Tray Applet
 NoDisplay=false
 Terminal=false

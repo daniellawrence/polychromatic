@@ -32,7 +32,7 @@ import polychromatic.preferences
 import polychromatic.profiles
 
 # Where is the application being ran?
-LOCATION_DATA = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data/'))
+LOCATION_DATA = '/usr/share/polychromatic/'
 
 
 class ChromaController(object):
@@ -579,7 +579,7 @@ class ChromaController(object):
         """
         Initialise the class
         """
-        w = Gtk.Window(title="Chroma Driver Configuration")
+        w = Gtk.Window(title="Polychromatic Controller")
         w.set_wmclass('razer_bcd_utility', 'razer_bcd_utility')
         w.set_position(Gtk.WindowPosition.CENTER)
         w.set_size_request(1000, 600)
