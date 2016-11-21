@@ -27,6 +27,20 @@ target_icon="/usr/share/icons"
 modules="/usr/lib/python3/dist-packages/polychromatic"
 locale_dir="/usr/share/locale/"
 
+function delete_directory {
+    dir="${1}"
+    if [ -d ${dir} ];then
+	echo rm -rf "${dir}"
+    fi
+}
+
+function delete_file {
+    file="${1}"
+    if [ -d "${file}" ];then
+	echo rm "${file}"
+    fi
+}
+
 # Are we root?
 if [ "$(id -u)" != "0" ]; then
     echo "To uninstall, this script must be run as root." 1>&2
@@ -44,14 +58,14 @@ if [ ! "$0" == "$clean_script" ]; then
 fi
 
 # Deleting files
-rm -rf "$target_data"
-rm -rf "$modules"
-rm     "$target_bin/polychromatic-controller"
-rm     "$target_bin/polychromatic-tray-applet"
-rm     "$target_icon/hicolor/scalable/apps/polychromatic.svg"
-rm -rf /usr/share/applications/polychromatic-controller.desktop
-rm -rf /usr/share/applications/polychromatic-tray-applet.desktop
-rm -rf /etc/xdg/autostart/polychromatic-tray-applet.desktop
+delete_directory "$target_data"
+delete_directory "$modules"
+delete_file      "$target_bin/polychromatic-controller"
+delete_file      "$target_bin/polychromatic-tray-applet"
+delete_file      "$target_icon/hicolor/scalable/apps/polychromatic.svg"
+delete_directory /usr/share/applications/polychromatic-controller.desktop
+delete_directory /usr/share/applications/polychromatic-tray-applet.desktop
+delete_directory /etc/xdg/autostart/polychromatic-tray-applet.desktop
 
 # Delete locales
 find $locale_dir -name "polychromatic-controller.mo" -type f -delete
